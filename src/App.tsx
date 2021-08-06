@@ -12,7 +12,6 @@ function App(props: any) {
     const data = await response.json()
     const poke = data.results
     setPokemon(poke)
-    // console.log(poke)
   }
 
   useEffect(() => {

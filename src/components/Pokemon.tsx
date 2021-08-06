@@ -13,7 +13,7 @@ const Pokemon: React.FC<PokemonProps> = ({ pokemon }) => {
   console.log(pokemon)
   return (
     <div>
-      {pokemon?.map((pokemon, index) => 
+      {pokemon?.map((pokemon, index ) => 
         <PokemonCard key={index} {...pokemon}/>
       )}
     </div>
