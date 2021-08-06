@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-// import { Link, BrowserRouter } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 import { PokemonProps } from './Pokemon'
+import styled from 'styled-components'
+
 
 const PokemonCard: React.FC<PokemonProps> = ( props: any ) => {
   const [singlePokemon, setSinglePokemon] = useState()
-  
+  console.log(props)
 
   useEffect(() => {
     async function getSinglePokemon() {
@@ -13,23 +14,26 @@ const PokemonCard: React.FC<PokemonProps> = ( props: any ) => {
       const response = await fetch(singlePokemon)
       const data = await response.json()
       console.log(data)
-      const id = data.id
-      console.log(id)
+      const id = data.id 
+      // console.log(id)
       setSinglePokemon(id)
     }
     getSinglePokemon()
   }, [props.url])
 
   return (
-    <div>
-      {/* <BrowserRouter>
-        <Link to={`/pokemon/${pokemon}`} />
-      </BrowserRouter> */}
-      <h1>Poke</h1>
-      {singlePokemon}
-    </div>
+      <div className="card">
+        <Link to={`/pokemon/${singlePokemon}`}>
+          <div>{props.name}</div>
+            {/* <p>{singlePokemon?.name}</p> */}
+
+        </Link>
+        {/* <h1>Poke</h1>
+        {singlePokemon} */}
+      </div>
   )
 }
 
 export default PokemonCard
+
 

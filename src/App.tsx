@@ -1,27 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './App.css'
-import Pokemon from './components/Pokemon'  
-
-const apiUrl = "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20"
+import Pokemon from './components/Pokemon' 
+import PokemonCard from './components/PokemonCard'
+import { BrowserRouter, Switch, Route } from 'react-router-dom' 
 
 function App(props: any) {
-  const [pokemon, setPokemon] = useState([])
-
-  async function getPokemon() {
-    const response = await fetch(apiUrl)
-    const data = await response.json()
-    const poke = data.results
-    setPokemon(poke)
-  }
-
-  useEffect(() => {
-    getPokemon()
-  }, [])
-
   return (
-    <div className="App">
-      <Pokemon pokemon={pokemon}/>
-    </div>
+    <BrowserRouter>
+    <Switch>
+      <Route path="/pokemon/:id" component={PokemonCard} />
+      <Route exact path="/" component={Pokemon}/>  
+    </Switch>
+  </BrowserRouter>
   )
 }
 
