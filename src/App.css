@@ -7,7 +7,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+/* Mobile Styling first */
+
 .card-container {
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   margin: 20px;
@@ -33,4 +36,20 @@ a {
   font-size: 30px;
   color: white;
   
+}
+
+/* Styling for Tablets */
+
+@media (min-width: 768px) {
+  .card {
+    width: 45%;
+  }
+}
+
+/* Styling for Desktop */
+
+@media (min-width: 1281px) {
+  .card {
+    width: 30%;
+  }
 }
