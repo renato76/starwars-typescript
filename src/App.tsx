@@ -1,14 +1,13 @@
 import './App.css'
-import Pokemon from './components/Pokemon' 
-import PokemonCard from './components/PokemonCard'
+import Characters from './components/Characters' 
 import { BrowserRouter, Switch, Route } from 'react-router-dom' 
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/pokemon/:id" component={PokemonCard} />
-        <Route exact path="/" component={Pokemon}/>  
+        <Route path="/people/:id" />
+        <Route exact path="/" component={Characters}/>  
       </Switch>
     </BrowserRouter>
   )

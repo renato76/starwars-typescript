@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #1a1a1a;
+  background-color: #ffffff;
 }
 
 /* Mobile Styling first */
@@ -36,6 +36,7 @@ body {
 
 .card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 94%;

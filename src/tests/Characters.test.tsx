@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import Pokemon from '../components/Pokemon'
+import Pokemon from '../components/Characters'
 
 // test('renders star wars heading', () => {
 //   render(<Pokemon />)
