@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import PokemonCard from './CharacterCard'
+import CharacterCard from './CharacterCard'
 
 
 const apiUrl = "https://swapi.dev/api/people"
@@ -33,7 +33,7 @@ const Character: React.FC<CharacterProps> = () => {
       </div>
       <div  className="card-container">
         {characters?.map((character, index ) => 
-          <PokemonCard key={index} {...character}/>
+          <CharacterCard key={index} {...character}/>
         )}
       </div>
     </>
