@@ -28,8 +28,8 @@ const Character: React.FC<CharacterProps> = () => {
   console.log(characters)
   return (
     <>
-      <div className="logo">
-      <h1>Star Wars Catalog</h1>
+      <div className="title">
+        <h1>Star Wars Catalog</h1>
       </div>
       <div  className="card-container">
         {characters?.map((character, index ) => 

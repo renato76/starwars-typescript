@@ -7,13 +7,14 @@ const PokemonCard: React.FC<CharacterProps> = (props: CharacterProps) => {
   console.log(props)
   return (
       <div className="card">
-        <Link to={`/people/${id}`}>
-          
+        <Link to={`/people/${id}`}> 
         </Link>
-        <h1>{name}</h1>
-        <h3>{birthYear}</h3>
-        <h3>{height}</h3>
-        <h3>{films.length}</h3>
+        <div className="card-info">
+          <h1>{name}</h1>
+          <h3>Height: {height}</h3>
+          <h3>Birth Year: {birthYear}</h3>
+          <h3>{films.length} Films</h3>
+        </div>  
       </div>
   )
 }

@@ -13,19 +13,6 @@ body {
 
 /* Mobile Styling first */
 
-.logo {
-  display: flex;
-  justify-content: center;
-}
-
-#logo {
-  margin-top: 30px;
-  background-image: url("https://www.freepnglogos.com/uploads/pokemon-logo-text-png-7.png");
-  width: 300px;
-  height: 120px;
-
-}
-
 .card-container {
   justify-content: center;
   display: flex;
@@ -38,7 +25,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   width: 94%;
   flex-wrap: wrap;
   height: 240px;
@@ -49,11 +35,33 @@ body {
   border-radius: 10px;
 }
 
+.card-info {
+  margin-left: 50px;
+  
+}
+
+.title h1 {
+  margin: 50px 0 30px 0;
+  font-size: 25px;
+  color: #171717;
+  text-align: center;
+}
+
+.card-info h1 {
+  font-size: 25px;
+  color: white;
+  padding: 25px 20px;
+}
+
+.card-info h3 {
+  font-size: 16px;
+  color: white;
+  padding: 5px 20px;
+}
+
 a {
   text-decoration: none;
-  font-size: 30px;
   color: white;
-  
 }
 
 /* Styling for Tablets */
