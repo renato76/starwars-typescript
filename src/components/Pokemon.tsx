@@ -27,8 +27,8 @@ const Pokemon: React.FC<PokemonProps> = () => {
   // console.log(pokemon)
   return (
     <>
-      <div>
-        <h1>Pokemon</h1>
+      <div className="logo">
+        <img id="logo" src="https://www.freepnglogos.com/uploads/pokemon-logo-text-png-7.png" alt="pokemon-logo" />
       </div>
       <div  className="card-container">
         {pokemon?.map((pokemon, index ) => 
