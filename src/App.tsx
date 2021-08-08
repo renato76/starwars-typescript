@@ -1,13 +1,14 @@
 import './App.css'
-import Characters from './components/Characters' 
+import Characters from './components/Characters'
+import CharacterShow from './components/CharacterShow' 
 import { BrowserRouter, Switch, Route } from 'react-router-dom' 
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/people/:id" />
-        <Route exact path="/" component={Characters}/>  
+        <Route exact path="/" component={Characters} />  
+        <Route path="/person/:id" component={CharacterShow} />
       </Switch>
     </BrowserRouter>
   )
