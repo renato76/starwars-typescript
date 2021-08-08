@@ -2,22 +2,19 @@ import React,{ useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { CharacterProps } from './Characters'
 
-// interface RouteParams {
-//   id: any
-// }
+interface RouteParams {
+  id: string
+}
 
 const CharacterShow: React.FC<CharacterProps> = () => {
-  const [character, setCharacter] = useState<any>()
+  const [character, setCharacter] = useState<CharacterProps>()
 
-  const { id } = useParams<any>()
-  console.log('params >>>', id)
+  const { id } = useParams<RouteParams>()
 
   useEffect(() => {
     const getCharacter = async () => {
       const response = await fetch(`https://swapi.dev/api/people/${id}`)
-      // console.log(response)
       const data = await response.json()
-      // console.log(data)
       setCharacter(data)
     }
     getCharacter()

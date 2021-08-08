@@ -4,7 +4,7 @@ import { CharacterProps } from './Characters'
 
 const PokemonCard: React.FC<CharacterProps> = (props) => {
   const { id, name, height, birth_year: birthYear, films } = props
-  console.log(props)
+  console.log('props >>>', props)
   return (
       <div className="card">
         <Link to={`/person/${id}`} > 

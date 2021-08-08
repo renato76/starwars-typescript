@@ -11,34 +11,32 @@ export interface CharacterProps {
   id: number
 } 
 
-const Character: React.FC<CharacterProps> = (props) => {
-  const [characters, setCharacters] = useState<any[]>([])
-
-  // console.log(props)
+const Character: React.FC<CharacterProps> = () => {
+  const [characters, setCharacters] = useState<CharacterProps[]>([])
 
   async function getCharacters() {
     const response = await fetch(apiUrl)
     const data = await response.json()
     const results = data.results
-    console.log(results)
+
+    // add an id to each character
     for (let i = 0; i < results.length; i++) {
       const character = results[i]
       character.id = i + 1
     }
     setCharacters(results)
   }
-
   useEffect(() => {
     getCharacters()
   }, [])
-  // console.log(characters)
+  
   return (
     <>
       <div className="title">
         <h1>Star Wars Catalog</h1>
       </div>
       <div  className="card-container">
-        {characters?.map((character: any, index: number) => 
+        {characters?.map((character, index) => 
           <CharacterCard key={index} {...character} />
         )}
       </div>
