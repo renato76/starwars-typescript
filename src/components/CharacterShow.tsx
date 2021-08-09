@@ -1,14 +1,15 @@
 import React,{ useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { CharacterProps } from './Characters'
+import FilmDetails from './FilmDetails'
 
 interface RouteParams {
   id: string
 }
 
-const CharacterShow: React.FC<CharacterProps> = () => {
+const CharacterShow: React.FC<CharacterProps> = (props) => {
   const [character, setCharacter] = useState<CharacterProps>()
-
+  console.log(typeof(character))
   const { id } = useParams<RouteParams>()
 
   useEffect(() => {
@@ -21,10 +22,35 @@ const CharacterShow: React.FC<CharacterProps> = () => {
   }, [id])
 
   return (
-    <div>
-      <h1>Character Show</h1>
-      {character?.name}
-    </div>
+    <>
+      <div className="show-container">
+        <div className="show-title">
+          <h1>{character?.name}</h1>
+        </div>
+        <div className="show-person-info">
+          <div className="person-info-items">
+            <h3>Height: {character?.height}</h3>
+          </div>
+          <div className="person-info-items">
+            <h3>Eye Colour: {character?.eye_color}</h3>
+          </div>
+          <div className="person-info-items">
+            <h3>Birth Date: {character?.birth_year}</h3>
+          </div>
+          <div className="person-info-items">
+            <h3>Hair Colour: {character?.hair_color}</h3>
+          </div>
+        </div>
+        <div className="films-container">
+          <div className="films-title">
+            <h3>Films</h3>
+          </div>
+          <div className="films-details">
+            <FilmDetails urls={character?.films} />
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 

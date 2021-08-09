@@ -12,7 +12,7 @@ const PokemonCard: React.FC<CharacterProps> = (props) => {
             <h1>{name}</h1>
             <h3>Height: {height} cm</h3>
             <h3>Birth Year: {birthYear}</h3>
-            <h3>{films.length} Films</h3>
+            <h3>{films?.length} Films</h3>
           </div>  
         </Link>
       </div>

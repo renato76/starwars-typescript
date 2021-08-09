@@ -64,6 +64,41 @@ a {
   color: white;
 }
 
+
+/* SHOW PAGE */
+.show-container {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 20px;
+  align-items: center;
+}
+
+.show-title {
+  margin: 30px;
+}
+
+.show-person-info {
+  border: 1px dashed red;
+  width: 100%;
+}
+
+.person-info-items {
+  margin: 20px 30px;
+  padding: 5%;
+  border: 1px dashed purple;
+}
+
+.films-container {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 20px;
+  align-items: center;
+}
+
 /* Styling for Tablets */
 
 @media (min-width: 768px) {

@@ -3,13 +3,15 @@ import CharacterCard from './CharacterCard'
 
 const apiUrl = "https://swapi.dev/api/people"
 
-export interface CharacterProps {
+export interface CharacterProps { 
   name: string
   height: string
   birth_year: string
-  films: string
   id: number
-} 
+  eye_color: string
+  hair_color: string
+  films: string | undefined
+}
 
 const Character: React.FC<CharacterProps> = () => {
   const [characters, setCharacters] = useState<CharacterProps[]>([])
@@ -18,6 +20,7 @@ const Character: React.FC<CharacterProps> = () => {
     const response = await fetch(apiUrl)
     const data = await response.json()
     const results = data.results
+    console.log(results)
 
     // add an id to each character
     for (let i = 0; i < results.length; i++) {
