@@ -1,0 +1,50 @@
+image: node:latest
+stages: ["build", "test", "deploy_aws"]
+
+# WARNING
+# This pipeline needs the following variables set up to work:
+# SERVER_IP =  // the ec2 instance public ip or domain
+# SECRET_KEY = // the key to connect to the ec2 instance
+
+# The cached folders between different pipeline jobs
+cache:
+  paths:
+    - node_modules/
+
+# the build job
+build:
+  stage: build
+  script:
+    - npm install
+
+# the test job
+test:
+  stage: test
+  script:
+    - npm install
+    - npm run test
+
+# the deploy job
+deploy_aws:
+  stage: deploy_aws
+  before_script: # prepare the pipeline runner for deploy by installing ssh
+    - "which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )"
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - apt-get update -y
+    - apt-get -y install rsync
+  script:
+    - chmod 400 $SECRET_KEY
+    # clean up the ec32 instance
+    - ssh -i $SECRET_KEY ec2-user@$SERVER_IP 'rm -rf /home/ec2-user/api'
+    - ssh -i $SECRET_KEY ec2-user@$SERVER_IP 'mkdir /home/ec2-user/api'
+    # copy files to the ec2 instance
+    - scp -i $SECRET_KEY -r src ec2-user@$SERVER_IP:/home/ec2-user/api
+    - scp -i $SECRET_KEY package.json ec2-user@$SERVER_IP:/home/ec2-user/api/package.json
+    - scp -i $SECRET_KEY deploy.sh ec2-user@$SERVER_IP:/home/ec2-user/api/deploy.sh
+
+    # run the deploy script
+    - ssh -i $SECRET_KEY ec2-user@$SERVER_IP 'cd /home/ec2-user/api && bash deploy.sh'
+
