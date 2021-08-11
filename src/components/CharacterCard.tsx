@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { CharacterProps } from './Characters'
+import { CharacterProps } from '../../src/types/CharacterProps'
 
 const PokemonCard: React.FC<CharacterProps> = (props) => {
   const { id, name, height, birth_year: birthYear, films } = props

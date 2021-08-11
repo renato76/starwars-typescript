@@ -1,7 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { CharacterProps } from './Characters'
 import FilmDetails from './FilmDetails'
+import { CharacterProps } from '../../src/types/CharacterProps'
 
 interface RouteParams {
   id: string
@@ -9,7 +9,6 @@ interface RouteParams {
 
 const CharacterShow: React.FC<CharacterProps> = (props) => {
   const [character, setCharacter] = useState<CharacterProps>()
-  console.log(typeof(character))
   const { id } = useParams<RouteParams>()
 
   useEffect(() => {
@@ -46,7 +45,7 @@ const CharacterShow: React.FC<CharacterProps> = (props) => {
             <h3>Films</h3>
           </div>
           <div className="films-details">
-            <FilmDetails urls={character?.films} />
+            <FilmDetails films={character?.films} />
           </div>
         </div>
       </div>

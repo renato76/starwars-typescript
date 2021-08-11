@@ -91,12 +91,23 @@ a {
 }
 
 .films-container {
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  border: 1px dashed rgb(1, 171, 117);
+  width: 100%;
+}
+
+.films-title {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.films-details {
+  margin: 20px 30px;
+  padding: 5%;
+  border: 1px dashed purple;
+}
+
+.film-details-items {
   margin: 20px;
-  align-items: center;
 }
 
 /* Styling for Tablets */

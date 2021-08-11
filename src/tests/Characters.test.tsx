@@ -1,16 +1,35 @@
+
+// __tests__/fetch.test.js
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import Pokemon from '../components/Characters'
+import { BrowserRouter as Router } from "react-router-dom"
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
+import { render, waitFor, screen} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import Characters from '../components/Characters'
 
-// test('renders star wars heading', () => {
-//   render(<Pokemon />)
-//   const linkElement = screen.getByText('Star Wars')
-//   expect(linkElement).toBeInTheDocument()
-// })
+// mock test for the server
+const server = setupServer(
+  rest.get('http://localhost:3000', (req, res, ctx) => {
+    return res(ctx.json([{
+      "name": "Luke Skywalker",
+      "height": "172",
+      "id": 1
+    }]))
+  })
+)
 
-test('Logo must have src = "https://www.freepnglogos.com/uploads/pokemon-logo-text-png-7.png" and alt = "pokemon-logo"', () => {
-  render(<Pokemon/>)
-  const logo = screen.getByRole('img')
-  expect(logo).toHaveAttribute('src', 'https://www.freepnglogos.com/uploads/pokemon-logo-text-png-7.png')
-  expect(logo).toHaveAttribute('alt')
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
+
+test('loads and displays page title', async () => {
+  render(
+    <Router>
+      <Characters />
+    </Router>)
+
+  await waitFor(() => screen.getByTestId('test-characters'))
+
+  expect(screen.getByTestId('test-characters')).toHaveTextContent('Star Wars Catalog')
 })

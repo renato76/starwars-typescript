@@ -3,21 +3,12 @@ import CharacterCard from './CharacterCard'
 
 const apiUrl = "https://swapi.dev/api/people"
 
-export interface CharacterProps { 
-  name: string
-  height: string
-  birth_year: string
-  id: number
-  eye_color: string
-  hair_color: string
-  films: string | undefined
-}
-
-const Character: React.FC<CharacterProps> = () => {
-  const [characters, setCharacters] = useState<CharacterProps[]>([])
+const Characters: React.FC = () => {
+  const [characters, setCharacters] = useState([])
 
   async function getCharacters() {
     const response = await fetch(apiUrl)
+    console.log(response)
     const data = await response.json()
     const results = data.results
     console.log(results)
@@ -35,10 +26,10 @@ const Character: React.FC<CharacterProps> = () => {
   
   return (
     <>
-      <div className="title">
+      <div  data-testid="test-characters" className="title">
         <h1>Star Wars Catalog</h1>
       </div>
-      <div  className="card-container">
+      <div className="card-container">
         {characters?.map((character, index) => 
           <CharacterCard key={index} {...character} />
         )}
@@ -47,5 +38,5 @@ const Character: React.FC<CharacterProps> = () => {
   )
 }
 
-export default Character
+export default Characters
 
