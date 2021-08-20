@@ -13,6 +13,7 @@ body {
 
 /* Mobile Styling first */
 
+
 .card-container {
   justify-content: center;
   display: flex;
@@ -80,19 +81,17 @@ a {
 }
 
 .show-person-info {
-  border: 1px dashed red;
   width: 100%;
 }
 
 .person-info-items {
   margin: 20px 30px;
   padding: 5%;
-  border: 1px dashed purple;
+  border: 1px solid #1f1f1f;
 }
 
 .films-container {
-  border: 1px dashed rgb(1, 171, 117);
-  width: 100%;
+  margin: 20px;
 }
 
 .films-title {
@@ -103,11 +102,28 @@ a {
 .films-details {
   margin: 20px 30px;
   padding: 5%;
-  border: 1px dashed purple;
+  border: 1px solid #1f1f1f;
 }
 
 .film-details-items {
   margin: 20px;
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 50px;
+}
+.load-more-button {
+  width: 200px;
+  padding: 10px 10px;
+  background-color: #ba9e00;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.load-more-button:hover {
+  cursor: pointer;
 }
 
 /* Styling for Tablets */
@@ -116,6 +132,19 @@ a {
   .card {
     width: 45%;
   }
+  .show-person-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .films-container {
+    justify-content: flex-start;
+  }
+  .person-info-items {
+    width: 45%;
+    margin: 10px;
+    padding: 5%;
+  }
 }
 
 /* Styling for Desktop */
@@ -123,5 +152,18 @@ a {
 @media (min-width: 1281px) {
   .card {
     width: 30%;
+  }
+  .show-person-info {
+    justify-content: flex-start;
+  }
+  .person-info-items {
+    width: 30%;
+    margin: 10px;
+    padding: 5%;
+  }
+  .films-container {
+    justify-content: flex-start;
+    margin: 0;
+    max-width: 800px;
   }
 }

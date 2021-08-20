@@ -40,15 +40,15 @@ const CharacterShow: React.FC<CharacterProps> = (props) => {
             <h3>Hair Colour: {character?.hair_color}</h3>
           </div>
         </div>
-        <div className="films-container">
-          <div className="films-title">
-            <h3>Films</h3>
-          </div>
-          <div className="films-details">
-            <FilmDetails films={character?.films} />
-          </div>
-        </div>
       </div>
+      <div className="films-container">
+        <div className="films-title">
+          <h3>{character?.films?.length} Films</h3>
+        </div>
+        <div className="films-details">
+          <FilmDetails films={character?.films} />
+        </div>
+    </div>
     </>
   )
 }

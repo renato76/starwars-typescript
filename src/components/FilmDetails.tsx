@@ -1,31 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface Props {
   films: string[] | undefined
 }
 
 const FilmDetails: React.FC<Props> = (props) => {
-  
-  // 1. Send a fetch request to each url 
-  async function getData() {
-    const films = props.films
-    console.log(films)
-    const fetchFilms = await Promise.all(films!.map(url => fetch(url)))
-    console.log(fetchFilms)
-  }
-  getData()
-  // 2. get the name of each film
+  const [filmDetailsList, setFilmDetailsList] = useState<any[]>([])
+
+  useEffect(() => {
+    async function getData() {
+      const films = props.films
+      const fetchFilms = await Promise.all(films?.map(url => fetch(url)) || [])
+      const filmsData = await Promise.all(fetchFilms.map(response => response.json()))
+      setFilmDetailsList(filmsData)
+      // TODO: typescript quick shift for react
+    }
+    getData()
+  }, [props.films])
 
   return (
     <div className="film-details-container">
       <div className="film-details-items">
-        <h1>Film 1</h1>
-      </div>
-      <div className="film-details-items">
-        <h1>Film 2</h1>
-      </div>
-      <div className="film-details-items">
-        <h1>Film 3</h1>
+        {filmDetailsList.map(film => (
+          <p key={film.id}> - {film.title}</p>
+        ))}
       </div>
     </div>
   )
