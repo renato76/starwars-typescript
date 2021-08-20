@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import FilmDetails from './FilmDetails'
 import { CharacterProps } from '../../src/types/CharacterProps'
 
@@ -10,6 +10,7 @@ interface RouteParams {
 const CharacterShow: React.FC<CharacterProps> = (props) => {
   const [character, setCharacter] = useState<CharacterProps>()
   const { id } = useParams<RouteParams>()
+  const history = useHistory()
 
   useEffect(() => {
     const getCharacter = async () => {
@@ -48,6 +49,15 @@ const CharacterShow: React.FC<CharacterProps> = (props) => {
         <div className="films-details">
           <FilmDetails films={character?.films} />
         </div>
+    </div>
+    <div className="back-to-home">
+      <button 
+        className="load-more-button"
+        onClick={() => {
+          history.goBack();
+        }}
+      >Back to home ...
+      </button>
     </div>
     </>
   )

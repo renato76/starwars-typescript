@@ -13,7 +13,6 @@ body {
 
 /* Mobile Styling first */
 
-
 .card-container {
   justify-content: center;
   display: flex;
@@ -109,7 +108,8 @@ a {
   margin: 20px;
 }
 
-.load-more {
+.load-more,
+.back-to-home {
   display: flex;
   justify-content: center;
   margin: 20px 0 50px;
