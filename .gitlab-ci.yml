@@ -1,5 +1,5 @@
 image: node:latest
-stages: ["build", "test", "deploy_aws"]
+stages: ["build", "test", "deploy"]
 
 # WARNING
 # This pipeline needs the following variables set up to work:
