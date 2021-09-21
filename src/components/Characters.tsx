@@ -5,12 +5,12 @@ const apiUrl = "https://swapi.dev/api/people"
 
 const Characters: React.FC = () => {
   const [characters, setCharacters] = useState<any[]>([])
-  const [page, setPage] = useState(1)
-  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState<number>(1)
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     async function getCharacters() {      
-      setLoading(true);
+      setLoading(true)
       const response = await fetch(`${apiUrl}/?page=${page}`)
 
       // 2. display those results as well as previous ones!
@@ -20,21 +20,24 @@ const Characters: React.FC = () => {
       
       const start = (page - 1) * results.length;
 
+      const resultsWithId = results.map((char: any, i: number) => {
+        return {
+          ...char, 
+          id: start + i + 1
+        }
+      })
+
       // Add an id to each character
-      for (let i = 0; i < results.length; i++) {
-        const character = results[i]
-        character.id = start + i + 1
-      }
+      // for (let i = 0; i < results.length; i++) {
+      //   const character = results[i]
+      //   character.id = start + i + 1
+      // }
 
       setCharacters([
         ...characters,
-        ...results
+        ...resultsWithId
       ]);
-      /*setCharacters(characters => ([
-        ...characters,
-        ...results
-      ]));*/
-      setLoading(false);
+      setLoading(false)
     }
     getCharacters()
   // eslint-disable-next-line react-hooks/exhaustive-deps
